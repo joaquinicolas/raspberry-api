@@ -1,0 +1,11 @@
+{
+  "ElcaDB":{
+    "user":"elcausr",
+    "password":"Zzs25sn23235jkldszc85w",
+    "server":"localhost",
+    "database":"ElcaDB"
+  },
+  "server": {
+    "port": 9090
+  }
+}

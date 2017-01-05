@@ -1,0 +1,25 @@
+{
+  "name": "raspberryserver",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "test":"./node_modules/.bin/mocha --reporter spec"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.2",
+    "config": "^1.24.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "~4.14.0",
+    "jade": "~1.11.0",
+    "morgan": "~1.7.0",
+    "mssql": "^3.3.0",
+    "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "request": "^2.79.0"
+  }
+}
