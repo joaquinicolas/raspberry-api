@@ -17,16 +17,20 @@ Alive.prototype.keepAlive = function(mac) {
   
     let sql = this.sql;
     console.log("****keepAlive method ****");
-    let request = new this.sql.Request(this.sqlConnection);
-    console.log("***Request has been created***");
-    return request.query(
-              'INSERT INTO [estoyvivo] '+
-                   '([mac] '+
-                   ',[fecha]) ' +
-              'VALUES '+
-                   '(\'${{mac}}\' '+
-                   ',\''+ new Date() + '\')'
-);
+    this.sqlConnection.connect().then(() => {
+
+      let request = new this.sql.Request(this.sqlConnection);
+      console.log("***Request has been created***");
+      return request.query(
+                'INSERT INTO [estoyvivo] '+
+                    '([mac] '+
+                    ',[fecha]) ' +
+                'VALUES '+
+                    '(\'${{mac}}\' '+
+                    ',\''+ new Date() + '\')'
+        );
+            })
+    
 };
 
 /**

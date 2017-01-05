@@ -14,7 +14,7 @@ function app(config) {
     self.main = {
         config : config,
         sql : sql,
-        db:new sql.Connection(config.get('ElcaDB')).connect()
+        db:new sql.Connection(config.get('ElcaDB'))
     };
     return new Promise((resolve,reject) => {
 

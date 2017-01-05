@@ -16,19 +16,24 @@ function News(main){
  */
 News.prototype.Create = function(news = {}){
     if (msg = {}) return;
-    let request = new this.sql.Request(this.sqlConnection);
-    return request.query(
-        'INSERT INTO [Repositorio] ' +
-         '([Mac] ' +
-           ',[Fproceso] ' +
-           ',[Data] ' +
-           ',[procesado]) ' +
-     'VALUES ' +
-           '(\'' + news.Mac + ' \'' +
-           ',\''+new Date() +'\'' +
-           ',\'' + news.Data  + '\'' +
-           ',0)'
-    )
+    this.sqlConnection.connect()
+    .then(() => {
+
+        let request = new this.sql.Request(this.sqlConnection);
+        return request.query(
+            'INSERT INTO [Repositorio] ' +
+            '([Mac] ' +
+            ',[Fproceso] ' +
+            ',[Data] ' +
+            ',[procesado]) ' +
+        'VALUES ' +
+            '(\'' + news.Mac + ' \'' +
+            ',\''+new Date() +'\'' +
+            ',\'' + news.Data  + '\'' +
+            ',0)'
+        )
+
+    });
 }
 
 module.exports = News;
