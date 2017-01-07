@@ -16,8 +16,8 @@ function app(config) {
         sql : sql,
         db:new sql.Connection(config.get('ElcaDB'))
     };
+    console.log(new Date().smallDate());
     return new Promise((resolve,reject) => {
-
 
         self.getApp()
             .then(() => self.controllers())
@@ -72,5 +72,13 @@ app.prototype.lib = function(){
         self.main.libs.News = new lib.news(self.main);
         resolve(self.main.libs);
     });
+}
+
+Date.prototype.smallDate = function(){
+    var date = new Date();
+    return date.getUTCFullYear() + '-' +
+            ('00' + (date.getUTCMonth() + 1)).slice(-2) + '-' +
+            ('00' + date.getUTCDate()).slice(-2) + ' ';
+
 }
 module.exports = app;

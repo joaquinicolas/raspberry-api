@@ -1,6 +1,6 @@
 /**
  * @param {Object} main Application instance
- * 
+ *
  */
 function Alive(main) {
   this.sqlConnection = main.db;
@@ -14,23 +14,27 @@ function Alive(main) {
  */
 
 Alive.prototype.keepAlive = function(mac) {
-  
+
     let sql = this.sql;
     console.log("****keepAlive method ****");
-    this.sqlConnection.connect().then(() => {
+    return this.sqlConnection.connect().then(() => {
 
       let request = new this.sql.Request(this.sqlConnection);
       console.log("***Request has been created***");
+      console.log(new Date().smallDate())
       return request.query(
                 'INSERT INTO [estoyvivo] '+
                     '([mac] '+
                     ',[fecha]) ' +
                 'VALUES '+
-                    '(\'${{mac}}\' '+
-                    ',\''+ new Date() + '\')'
+                    '(\''+ mac + '\' '+
+                    ',\''+ new Date().smallDate() + '\' )'
         );
             })
-    
+            .catch(err => {
+                throw err;
+            })
+
 };
 
 /**

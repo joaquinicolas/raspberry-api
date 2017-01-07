@@ -1,8 +1,8 @@
 {
   "ElcaDB":{
-    "user":"elcausr",
-    "password":"Zzs25sn23235jkldszc85w",
-    "server":"localhost",
+    "user":"sa",//"elcausr",
+    "password":"Joaco2017",//"Zzs25sn23235jkldszc85w",
+    "server":"127.0.0.1",
     "database":"ElcaDB"
   },
   "server": {

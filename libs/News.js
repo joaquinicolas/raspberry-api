@@ -15,8 +15,9 @@ function News(main){
  * 
  */
 News.prototype.Create = function(news = {}){
-    if (msg = {}) return;
-    this.sqlConnection.connect()
+    console.log(news)
+    if (news == {}) throw new Error("undefined message");
+    return this.sqlConnection.connect()
     .then(() => {
 
         let request = new this.sql.Request(this.sqlConnection);
@@ -28,11 +29,14 @@ News.prototype.Create = function(news = {}){
             ',[procesado]) ' +
         'VALUES ' +
             '(\'' + news.Mac + ' \'' +
-            ',\''+new Date() +'\'' +
+            ',\''+new Date().smallDate() +'\'' +
             ',\'' + news.Data  + '\'' +
             ',0)'
         )
 
+    })
+    .catch(err =>{
+        throw err;
     });
 }
 
