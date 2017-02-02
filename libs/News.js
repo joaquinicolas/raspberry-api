@@ -17,8 +17,21 @@ function News(main){
 News.prototype.Create = function(news = {}){
     console.log(news)
     if (news == {}) throw new Error("undefined message");
-    return this.sqlConnection.connect()
-    .then(() => {
+    let request = new this.sql.Request(this.sqlConnection);
+    return request.query(
+        'INSERT INTO [Repositorio] ' +
+        '([Mac] ' +
+        ',[Fproceso] ' +
+        ',[Data] ' +
+        ',[procesado]) ' +
+        'VALUES ' +
+        '(\'' + news.Mac + ' \'' +
+        ',\''+new Date().smallDate() +'\'' +
+        ',\'' + news.Data  + '\'' +
+        ',0)'
+    )
+    /* this.sqlConnection.connect()
+    return then(() => {
 
         let request = new this.sql.Request(this.sqlConnection);
         return request.query(
@@ -37,7 +50,7 @@ News.prototype.Create = function(news = {}){
     })
     .catch(err =>{
         throw err;
-    });
+    });*/
 }
 
 module.exports = News;

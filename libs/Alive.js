@@ -17,7 +17,18 @@ Alive.prototype.keepAlive = function(mac) {
 
     let sql = this.sql;
     console.log("****keepAlive method ****");
-    return this.sqlConnection.connect().then(() => {
+    let request = new this.sql.Request(this.sqlConnection);
+      console.log("***Request has been created***");
+      console.log(new Date().smallDate())
+      return request.query(
+                'INSERT INTO [estoyvivo] '+
+                    '([mac] '+
+                    ',[fecha]) ' +
+                'VALUES '+
+                    '(\''+ mac + '\' '+
+                    ',\''+ new Date().smallDate() + '\' )'
+        );
+    /*return this.sqlConnection.connect().then(() => {
 
       let request = new this.sql.Request(this.sqlConnection);
       console.log("***Request has been created***");
@@ -34,7 +45,7 @@ Alive.prototype.keepAlive = function(mac) {
             .catch(err => {
                 throw err;
             })
-
+*/
 };
 
 /**

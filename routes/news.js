@@ -3,7 +3,6 @@ function News(main){
     return {
         Add:function(req,res,next){
             let news = req.body;
-            console.log(news);
             main.libs.News.Create(news)
             .then((err,recordset) => {
                 if (err) {
